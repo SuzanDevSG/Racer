@@ -1,9 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.Experimental.GraphView;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     public MeshRenderer meshRenderer;
 
     private Rigidbody rb;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         meshRenderer.material = GameManager.instance.activeMaterial;
         rb = GetComponent<Rigidbody>();
     }

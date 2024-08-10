@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2759269946772293112}
   - component: {fileID: 744529022103675834}
   - component: {fileID: 2226399978769939741}
+  - component: {fileID: 5088951110263056498}
   m_Layer: 0
   m_Name: JumpPlatform
   m_TagString: Booster
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5270206963502435439, guid: 6abff7d9dbcbf374aa89105dccff049f, type: 3}
+--- !u!114 &5088951110263056498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633543045399705138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e945f427fc3be347a715f9e0f083b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 8
+  direction: {x: 0, y: 1, z: 0}
+  mode: 1

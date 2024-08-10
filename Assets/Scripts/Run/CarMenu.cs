@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.PackageManager;
-using UnityEditor.SceneTemplate;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CarMenu : MonoBehaviour
 {

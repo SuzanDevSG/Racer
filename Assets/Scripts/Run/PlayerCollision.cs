@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -48,7 +43,7 @@ public class PlayerCollision : MonoBehaviour
         {
             hudManager.InGameTriggeredPanel[0].SetActive(true);
 
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             playerMovement.enabled = false;
         }
     }
