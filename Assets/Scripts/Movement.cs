@@ -1,32 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
     public Rigidbody rb;
     public float forwardForce;
     public float jumpForce;
-    void Start()
+    void FixedUpdate()
     {
-        rb.AddForce(Vector3.forward * forwardForce * Time.deltaTime, ForceMode.Impulse);
-        
-        
+        while(rb.velocity.y < 0.5f)
+        {
+            rb.AddForce(Vector3.forward * forwardForce * Time.deltaTime, ForceMode.Impulse);
+        }
     }
     void OnTriggerEnter(Collider Other)
     {
         Debug.Log(Other.name);
         
         if(Other.CompareTag("Obstackle") )
-            //rb.AddForce(Vector3.forward * forwardForce,ForceMode.Force);
-            Other.GetComponent<Obstacle>().Jumper(rb);
-        }
+            rb.AddForce(new Vector3(0,1,1) * jumpForce * Time.deltaTime, ForceMode.Impulse);
+    }
     }
 
-// public class Obstacle : MonoBehaviour{
-//     
-// }

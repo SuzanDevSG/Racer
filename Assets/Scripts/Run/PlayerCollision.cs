@@ -3,48 +3,75 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    public HUDManager hudManager;
+    private HUDManager hudManager;
+    [SerializeField] private float additionalBoost = 2f;
+    [SerializeField] private float jumpBoosterForce = 5f;
+    [SerializeField] private float BoosterDuration = 2f;
 
-    private Rigidbody rb;
+    private bool IsGameOver = false;
+    private bool IsLevelCompleted = false;
+
     private int roundNumber = 0;
+
     void Start()
     {
-
+        hudManager = HUDManager.Instance;
         playerMovement = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
     }
-    private void OnCollisionEnter(Collision collisionInfo)
+    private void Update()
     {
-        if (collisionInfo.collider.CompareTag("Obstackle"))
+        if (transform.position.y < -5)
         {
-            //Time.timeScale = 0;
+            IsGameOver = true;
             hudManager.InGameTriggeredPanel[0].SetActive(true);
             playerMovement.enabled = false;
         }
-        if (collisionInfo.collider.CompareTag("Booster"))
-            collisionInfo.collider.GetComponent<Obstacle>().Jumper(rb);
-        if (collisionInfo.collider.CompareTag("Triggers"))
+
+        if (IsGameOver)
         {
-            collisionInfo.collider.gameObject.SetActive(false);
-        }
-    }
-    private void OnTriggerEnter(Collider Other){
-        if(Other.CompareTag("CheckPoint")){
-            ++roundNumber;
-            Debug.Log("Round" + roundNumber +"Completed");
-            if(roundNumber >= 2){
-                //hudManager.HUD[1].SetActive(true);
-                hudManager.InGameTriggeredPanel[1].SetActive(true);
-            //playerMovement.enabled = false;
-            //hudManager.LoadNextLevelScene();
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                hudManager.Restart();
             }
         }
-        if(Other.CompareTag("Ground"))
+        if (IsLevelCompleted)
         {
-            hudManager.InGameTriggeredPanel[0].SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                hudManager.LoadNextLevelScene();
+            }
+        }
+    }
+    private void OnTriggerEnter(Collider Other)
+    {
 
-            //Time.timeScale = 0;
+        if (Other.CompareTag("Obstackle"))
+        {
+            IsGameOver = true;
+            hudManager.InGameTriggeredPanel[0].SetActive(true);
             playerMovement.enabled = false;
+        }
+
+        if (Other.CompareTag("Booster"))
+        {
+            playerMovement.PlayerBooster(additionalBoost, BoosterDuration);
+        }
+
+        if (Other.CompareTag("Jumper"))
+        {
+            playerMovement.PlayerJump(jumpBoosterForce);
+        }
+
+        if (Other.CompareTag("CheckPoint"))
+        {
+            ++roundNumber;
+            Debug.Log("Round" + roundNumber + "Completed");
+            if (roundNumber >= 2)
+            {
+                hudManager.InGameTriggeredPanel[1].SetActive(true);
+                playerMovement.enabled = false;
+                IsLevelCompleted = true;
+            }
         }
     }
 }

@@ -41,17 +41,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4411890204681565111}
     m_Modifications:
-    - target: {fileID: 116954209393136677, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 735196209775416297, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
       propertyPath: m_Name
       value: Trap1
       objectReference: {fileID: 0}
     - target: {fileID: 7370752810021802874, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7370752810021802874, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -117,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370752810021802874, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7370752810021802874, guid: c0d0499c2096d794ea6c8fda16dd119e, type: 3}
       propertyPath: m_LocalPosition.y

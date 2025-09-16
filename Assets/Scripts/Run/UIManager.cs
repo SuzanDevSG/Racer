@@ -1,21 +1,20 @@
-using UnityEditor;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
-{   
+{
     public GameObject[] mainMenuPanel;
-    private GameManager gameManager;
     private SceneManagement sceneManagement;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
         sceneManagement = SceneManagement.instance;
     }
-    public void LoadMainMenuScene(){
+    public void LoadMainMenuScene()
+    {
         sceneManagement.LoadSceneMgr(Cscene.MainMenu);
     }
-    public void LoadCustomizeScene(){
+    public void LoadCustomizeScene()
+    {
         sceneManagement.LoadSceneMgr(Cscene.Customize);
     }
     public void LoadEasy_Level1Scene()
@@ -28,7 +27,7 @@ public class UIManager : MonoBehaviour
     }
     public void LoadNormal_Level1()
     {
-        sceneManagement .LoadSceneMgr(Cscene.Normal_Level1);
+        sceneManagement.LoadSceneMgr(Cscene.Normal_Level1);
     }
     public void LoadNormal_Level2()
     {
@@ -68,12 +67,4 @@ public class UIManager : MonoBehaviour
     {
         mainMenuPanel[3].SetActive(false);
     }
-
-
-
-
-
-
-
-    
 }

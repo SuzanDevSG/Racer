@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstackle
-  - Triggers
   - Breakable
   - Booster
   - CheckPoint
   - Ground
+  - Jumper
   layers:
   - Default
   - TransparentFX

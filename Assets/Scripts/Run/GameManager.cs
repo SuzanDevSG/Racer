@@ -1,23 +1,16 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Material activeMaterial = null;
     void Awake()
     {
-    if( instance == null)
-        instance = this;
+        if (instance == null)
+            instance = this;
 
-    else if ( instance != null && instance != this)
-        Destroy(this);
+        else if (instance != null && instance != this)
+            Destroy(this);
     }
-
-
-
-
-
-
-
 
 }

@@ -1,20 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    public static HUDManager Instance { private set; get; }
     public GameObject[] HUD;
-    public GameObject[] pauseMenu; 
+    public GameObject[] pauseMenu;
     public GameObject[] InGameTriggeredPanel;
 
-    private void Start()
+    public Button[] GameOverButtons;
+    private void Awake()
     {
-        //InGameTriggeredPanel[0] = GameObject.Find("GameOver");
-        //InGameTriggeredPanel[1] = GameObject.Find("FinishLevel");
-
-        //playerEventUI = new GameObject[] { "GameOver", };
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
-
-
     public void LoadPauseMenu()
     {
         pauseMenu[0].SetActive(false);
@@ -49,11 +52,11 @@ public class HUDManager : MonoBehaviour
         pauseMenu[3].SetActive(false);
     }
 
-    public void QuitYes() 
+    public void QuitYes()
     {
         SceneManagement.instance.QuitYes();
     }
-     public void Restart()
+    public void Restart()
     {
         SceneManagement.instance.Restart();
         Time.timeScale = 1f;
@@ -62,6 +65,4 @@ public class HUDManager : MonoBehaviour
     {
         SceneManagement.instance.NextLevelScene();
     }
-
-
 }
